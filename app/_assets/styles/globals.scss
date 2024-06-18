@@ -1,0 +1,115 @@
+@use './_assets/styles/index';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'react-redux-toastr/src/styles/index';
+
+@font-face {
+	font-family: 'Noto Sans';
+	src: url('../fonts/NotoSans-Medium.ttf') format('opentype');
+}
+// Example: 'truetype' or 'opentype' depending on the file extension of your font
+
+body,
+html {
+	padding: 0;
+	margin: 0;
+	font-family: 'Noto Sans', sans-serif;
+	width: 100%;
+	height: 100%;
+}
+
+#__next {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+}
+
+:root {
+	--primary-color: #e30b13;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+@layer utilities {
+	.text-balance {
+		text-wrap: balance;
+	}
+}
+
+.section {
+	@apply flex flex-col items-center h-full pt-16 bg-gray-300 dark:bg-gray-800;
+} 
+
+.darkModeButton {
+	> svg {
+		height: 24px;
+		width: 24px;
+	}
+
+	&:hover {
+		> svg {
+			@apply fill-gray-600 dark:fill-gray-400;
+		}
+	}
+}
+
+.header_wrapper {
+	@apply flex fixed justify-center w-full h-16 bg-gray-400 dark:bg-gray-900 text-black dark:text-gray-300;
+}
+
+.left {
+	@apply flex items-center pl-3;
+}
+
+.right {
+	@apply flex items-center pr-3;
+}
+
+.navigation {
+	@apply flex gap-3 p-3;
+	list-style-type: none;
+}
+
+.login_registration {
+ @apply flex flex-col p-8 gap-2 bg-gray-400 dark:bg-gray-900 rounded-2xl;
+}
+
+.form_title {
+	@apply text-center text-2xl mb-3;
+}
+
+.label_wrapper {
+	@apply text-black dark:text-gray-300;
+}
+
+.input_wrapper {
+	@apply h-10 bg-gray-300 dark:bg-gray-800 text-black dark:text-gray-300 rounded-md;
+}
+
+.input_button {
+	@apply border border-gray-500 rounded-md h-10 text-lg mt-2 transition-colors;
+
+	&:hover {
+		@apply bg-blue-800;
+	}
+
+	&:active {
+		@apply bg-blue-600;
+	}
+}
+
+.button-wrapper {
+	@apply rounded-md;
+}
+
+.link {
+	&:hover {
+		@apply text-gray-600 dark:text-gray-400;	
+	}
+}

@@ -1,0 +1,8 @@
+.li {
+	float: left;
+	display: block;
+
+	a {
+		@apply flex items-center gap-1;
+	}
+}
