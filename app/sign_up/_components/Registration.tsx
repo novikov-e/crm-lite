@@ -1,18 +1,18 @@
 'use client'
 
-import {Body} from '_components/Body'
+import {Body} from '../../_components/Body'
 import React, {ChangeEventHandler, FC, useState} from 'react'
-import {userRegistration} from '../_actions/user.actions'
+import {userRegistration} from '../../_actions/user.actions'
 import {useRouter} from 'next/navigation'
 import {toastr} from 'react-redux-toastr'
-import {MaterialIcon} from '_components/ui/icons/MaterialIcon'
-import {emailRegex, oneCapitalLetter, oneDigit, oneSymbol} from '../_utils/string/regexes'
-import {RequirementType} from '../_utils/validation/RequirementType.enum'
-import {Requirement} from '../_utils/validation/Requirement.interface'
-import {validate} from '../_utils/validation/validation'
-import {RequirementItem} from '../_utils/validation/RequirementItem'
+import {MaterialIcon} from '../../_components/ui/icons/MaterialIcon'
+import {emailRegex, oneCapitalLetter, oneDigit, oneSymbol} from '../../_utils/string/regexes'
+import {RequirementType} from '../../_utils/validation/RequirementType.enum'
+import {Requirement} from '../../_utils/validation/Requirement.interface'
+import {validate} from '../../_utils/validation/validation'
+import {RequirementItem} from '../../_utils/validation/RequirementItem'
 import classNames from 'classnames'
-import {useTimeoutAfterLastChange} from '../_hooks/useTimeoutAfterLastChange'
+import {useTimeoutAfterLastChange} from '../../_hooks/useTimeoutAfterLastChange'
 
 export const Registration: FC = props => {
 	const router = useRouter()

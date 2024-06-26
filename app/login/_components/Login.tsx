@@ -1,13 +1,13 @@
 'use client'
 
-import {Body} from '_components/Body'
+import {Body} from '../../_components/Body'
 import React, {ChangeEvent, FC, useState} from 'react'
-import {sign} from '../_components/server/sign'
+import {sign} from '../../_components/server/sign'
 import classNames from 'classnames'
-import {MaterialIcon} from '../_components/ui/icons/MaterialIcon'
-import {RequirementType} from '../_utils/validation/RequirementType.enum'
-import {Requirement} from '../_utils/validation/Requirement.interface'
-import {RequirementItem} from '../_utils/validation/RequirementItem'
+import {MaterialIcon} from '../../_components/ui/icons/MaterialIcon'
+import {RequirementType} from '../../_utils/validation/RequirementType.enum'
+import {Requirement} from '../../_utils/validation/Requirement.interface'
+import {RequirementItem} from '../../_utils/validation/RequirementItem'
 
 export const Login: FC = props => {
 	const [email, setEmail] = useState('')
