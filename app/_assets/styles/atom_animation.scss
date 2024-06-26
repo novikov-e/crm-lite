@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.atom {
+  display: flex;
+  width: 80px;
+  height: 80px;
+  position: relative;
+  /*margin: auto;*/
+}
+
+.proton {
+  @apply bg-neutral-800 dark:bg-gray-300;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  //background-color: #db4c4c;
+  position: absolute;
+  top: calc(50% - 9px);
+  left: calc(50% - 9px);
+}
+
+.neutrons {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: 3s linear infinite rotateClockWise;
+}
+
+.first-neutron {
+  @apply bg-neutral-800 dark:bg-gray-300;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  //background-color: #2478b7;
+  position: absolute;
+  top: calc(50% - 4px);
+  left: calc(50% - 20px);
+}
+
+.second-neutron {
+  @apply bg-neutral-800 dark:bg-gray-300;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  //background-color: #2478b7;
+  position: absolute;
+  top: calc(50% - 4px);
+  right: calc(50% - 20px);
+}
+
+.electrons {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: 3s linear infinite rotateCounterClockWise;
+}
+
+.first-electron {
+  @apply bg-neutral-800 dark:bg-gray-300;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  //background-color: #4b8333;
+  position: absolute;
+  top: calc(50% - 30px);
+  left: calc(50% - 4px);
+}
+
+.second-electron {
+  @apply bg-neutral-800 dark:bg-gray-300;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  //background-color: #4b8333;
+  position: absolute;
+  bottom: calc(50% - 30px);
+  left: calc(50% - 4px);
+}
+
+@keyframes rotateClockWise {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotateCounterClockWise {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}

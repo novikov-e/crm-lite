@@ -1,4 +1,6 @@
-import {FC} from 'react'
+// 'use client'
+
+import { FC } from 'react'
 import ReduxToastr from 'react-redux-toastr'
 
 export const ReduxToast: FC = props => {

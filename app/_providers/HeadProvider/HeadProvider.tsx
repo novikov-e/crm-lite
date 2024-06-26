@@ -1,15 +1,14 @@
-import {FC} from 'react'
-import styles from './HeadProvider.module.scss'
+'use client'
 
+import { FC, ReactNode } from 'react'
 import NextNProgress from 'nextjs-progressbar'
-import {accentColor} from '_config/constants'
 import Head from 'next/head'
 import Favicons from './Favicons'
 
-export const HeadProvider: FC = ({children}) => {
+export const HeadProvider: FC<{children: ReactNode}> = ({children}) => {
 	return (
 		<>
-			<NextNProgress color={accentColor} startPosition={0.3} stopDelayMs={200} height={3} />
+			<NextNProgress color='#e30b13' startPosition={0.3} stopDelayMs={200} height={3} showOnShallow={true}/>
 			<Head>
 				<meta charSet='UTF-8' />
 				<meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1.0' />

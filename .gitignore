@@ -1,5 +1,13 @@
 #Schemes
 lite-crm.drawio
+next-auth.drawio
+
+#Test files
+test.js
+
+#Prisma
+prisma/migrations
+
 # Logs
 logs
 *.log

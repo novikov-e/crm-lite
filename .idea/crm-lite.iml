@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/.tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/temp" />
+      <excludeFolder url="file://$MODULE_DIR$/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/prisma/migrations/20240619112240_next_auth" />
+      <excludeFolder url="file://$MODULE_DIR$/prisma/migrations/20240619124757_role" />
+      <excludeFolder url="file://$MODULE_DIR$/prisma/migrations/20240619140036_password" />
+      <excludeFolder url="file://$MODULE_DIR$/prisma/migrations/20240620172234_remove" />
+      <excludeFolder url="file://$MODULE_DIR$/prisma/migrations/20240621134746_surname" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

@@ -1,0 +1,7 @@
+export enum RequirementType {
+	REQUIRED = 'REQUIRED',
+	MIN_LENGTH = 'MIN_LENGTH',
+	MAX_LENGTH = 'MAX_LENGTH',
+	REGEX = 'REGEX',
+	FUNCTION = 'FUNCTION'
+}
