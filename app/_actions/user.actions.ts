@@ -36,7 +36,7 @@ export async function userRegistration(data: {email:string, password: string}) {
 	
 	//Валидация
 	
-	console.log(`newUser(${data.email}, ${data.password})`)
+	// console.log(`newUser(${data.email}, ${data.password})`)
 	//Проверка есть ли пользователь с таким почтовым ящиком
 	
 	const user = await prisma.user.findUnique({
@@ -54,12 +54,12 @@ export async function userRegistration(data: {email:string, password: string}) {
 				role: UserRole.CLIENT
 			}
 		})
-		await sendEmail(
-			'noved256@yandex.ru',
-			'Test subject',
-			'Test text',
-			`<a href="${process.env.APP_URL}/confirm_email/${randomUUID()}">Подтвердить адрес электронной почты</a>`
-		)
+		// await sendEmail(
+		// 	'noved256@yandex.ru',
+		// 	'Test subject',
+		// 	'Test text',
+		// 	`<a href="${process.env.APP_URL}/confirm_email/${randomUUID()}">Подтвердить адрес электронной почты</a>`
+		// )
 		return true
 	} else {
 		return false
