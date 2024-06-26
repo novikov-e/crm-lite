@@ -1,4 +1,4 @@
-export default function AtomAnimation(props) {
+export default function AtomAnimation() {
     return (
         <div className="atom">
             <div className="proton" />

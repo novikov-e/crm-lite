@@ -2,9 +2,9 @@ import NextAuth from 'next-auth'
 import Credentials from 'next-auth/providers/credentials'
 import {PrismaAdapter} from '@auth/prisma-adapter'
 import prisma from '_utils/db'
-import {hash, compare, genSalt} from 'bcryptjs'
-import {User} from '_services/auth/dto/user.entity'
-import {UserFields} from '_services/auth/dto/user.fields'
+import {compare} from 'bcryptjs'
+import {UserFields} from './app/_model/user/user.fields'
+
 
 export const {handlers, signIn, signOut, auth} = NextAuth({
 	adapter: PrismaAdapter(prisma),
@@ -71,8 +71,8 @@ export const {handlers, signIn, signOut, auth} = NextAuth({
 
 			// console.log(session)
 			// console.log(token)
-			session.user.role = token.role
-			session.user.id = token.id
+			session.user.role = token.role as string
+			session.user.id = token.id as string
 			// if (trigger === 'update' && newSession?.name) {
 			// 	You can update the session in the database if it's not already updated.
 			// 	await adapter.updateUser(session.user.id, { name: newSession.name })

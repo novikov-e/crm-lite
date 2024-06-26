@@ -1,12 +1,12 @@
 import React, {FC} from 'react'
 import {Body} from '../Body'
 import {auth} from '../../../auth'
-import {UserRole} from '../../_services/auth/UserRole.enum'
+import {UserRole} from '../../_model/user/UserRole.enum'
 import {AdminIndex} from './admin/AdminIndex'
 import {EmployeeIndex} from './employee/EmployeeIndex'
 import {ClientIndex} from './client/ClientIndex'
 
-export const Index: FC = async props => {
+export const Index: FC = async () => {
 
 	const session = await auth()
 

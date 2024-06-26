@@ -1,4 +1,4 @@
-import {UserRole} from '_services/auth/UserRole.enum'
+import {UserRole} from './app/_model/user/UserRole.enum'
 import {auth} from './auth'
 
 const adminPaths: string[] = ['/', '/home', '/api/auth/session', '/api/hello', '/services', '/users']

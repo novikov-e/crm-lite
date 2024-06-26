@@ -1,27 +1,16 @@
-import nodemailer from 'nodemailer'
-
-const transportParams = {
-	host: process.env.NODEMAILER_HOST,
-	port: process.env.NODEMAILER_PORT,
-	secure: Boolean(process.env.NODEMAILER_SECURE), // Use `true` for port 465, `false` for all other ports
-	auth: {
-		user: process.env.NODEMAILER_USER,
-		pass: process.env.NODEMAILER_PASSWORD
-	}
-}
-
-// const transportParams = {
-	// host: 'smtp.yandex.ru',
-	// port: 465,
-	// secure: true, // Use `true` for port 465, `false` for all other ports
-	// auth: {
-		// user: 'lite-crm',
-		// pass: 'urlxajhspgwnjtlg'
-	// }
-// }
+import nodemailer, {TransportOptions} from 'nodemailer'
 
 const nodemailerTransportSingleton = () => {
-	return nodemailer.createTransport(transportParams)
+	return nodemailer.createTransport({
+		// @ts-ignore
+		host: process.env.NODEMAILER_HOST,
+		port: process.env.NODEMAILER_PORT,
+		secure: Boolean(process.env.NODEMAILER_SECURE),
+		auth: {
+			user: process.env.NODEMAILER_USER,
+			pass: process.env.NODEMAILER_PASSWORD
+		}
+	})
 }
 
 declare const globalThis: {

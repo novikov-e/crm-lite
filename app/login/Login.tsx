@@ -1,14 +1,13 @@
 'use client'
 
 import {Body} from '_components/Body'
-import React, {ChangeEventHandler, FC, useState} from 'react'
+import React, {ChangeEvent, FC, useState} from 'react'
 import {sign} from '../_components/server/sign'
 import classNames from 'classnames'
 import {MaterialIcon} from '../_components/ui/icons/MaterialIcon'
 import {RequirementType} from '../_utils/validation/RequirementType.enum'
 import {Requirement} from '../_utils/validation/Requirement.interface'
 import {RequirementItem} from '../_utils/validation/RequirementItem'
-
 
 export const Login: FC = props => {
 	const [email, setEmail] = useState('')
@@ -19,7 +18,7 @@ export const Login: FC = props => {
 		message: 'Обязательно для заполнения',
 		validation: null
 	})
-	const emailOnChange = (event: ChangeEventHandler<HTMLInputElement>) => {
+	const emailOnChange = (event: ChangeEvent<HTMLInputElement>) => {
 		const email = event.target.value
 		if (emailRequirement.validation !== null && !emailRequirement.validation && email) {
 			setEmailRequirement(prev => {
@@ -37,7 +36,7 @@ export const Login: FC = props => {
 		message: 'Обязательно для заполнения',
 		validation: null
 	})
-	const passwordOnChange = (event: ChangeEventHandler<HTMLInputElement>) => {
+	const passwordOnChange = (event: ChangeEvent<HTMLInputElement>) => {
 		const password = event.target.value
 		if (passwordRequirement.validation !== null && !passwordRequirement.validation && password) {
 			setPasswordRequirement(prev => {
@@ -49,13 +48,11 @@ export const Login: FC = props => {
 	}
 	const [passwordFocused, setPasswordFocused] = useState(false)
 	const [passwordVisible, setPasswordVisible] = useState(false)
-	const showPassword = (event: MouseEvent) => {
-		event.stopPropagation()
+	const showPassword = () => {
 		setPasswordVisible(prev => !prev)
 	}
 
-	const onSubmit = async (event: MouseEvent) => {
-		event.stopPropagation()
+	const onSubmit = async() => {
 		if (!email || !password) {
 			if (!email) {
 				setEmailRequirement(prev => {

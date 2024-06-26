@@ -1,6 +1,6 @@
 'use server'
 
-import { UserRole } from '_services/auth/UserRole.enum'
+import { UserRole } from '../_model/user/UserRole.enum'
 import prisma from '_utils/db'
 import { sendEmail } from '_utils/email'
 import { hash, genSalt } from 'bcryptjs'
@@ -9,7 +9,7 @@ import { randomUUID } from 'crypto'
 
 export const userRegistrationFromAdmin = async (email: string, password: string, role: string) => {
 	console.log(`newUser(${email}, ${password}, ${role})`)
-	sendEmail(
+	await sendEmail(
 		'noved256@yandex.ru',
 		'Test subject',
 		'Test text',

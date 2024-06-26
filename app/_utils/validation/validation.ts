@@ -19,7 +19,7 @@ export const validate = (requirement: Requirement, value: string) => {
 			}
 			break
 		case RequirementType.FUNCTION:
-			requirement.validation = requirement.value()
+			// requirement.validation = requirement.value()
 			break
 		default:
 			break

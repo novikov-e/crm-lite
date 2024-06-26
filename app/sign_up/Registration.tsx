@@ -112,12 +112,13 @@ export const Registration: FC = props => {
 			})
 		let newEmailValidated: boolean = newEmailRequirements
 			.filter(requirement => requirement.name !== 'isAvailable')
-			.reduce((acc, value) => acc && value.validation, true)
+			.reduce((acc, value) => acc && Boolean(value.validation), true)
 		let available: boolean | null = null
 		if (newEmailValidated) {
 			available = await checkEmailAvailable(email)
 			newEmailRequirements[2].validation = available
-			newEmailValidated = newEmailRequirements.reduce((acc, value) => acc && value.validation, true)
+			newEmailValidated = newEmailRequirements
+				.reduce((acc, value) => acc && Boolean(value.validation), true)
 		} else {
 			newEmailRequirements[2].validation = true
 		}
@@ -137,16 +138,16 @@ export const Registration: FC = props => {
 		const newPasswordRequirements = passwordRequirements
 			.map(requirement => validate(requirement, password))
 		const newPasswordValidated: boolean = newPasswordRequirements
-			.reduce((acc, value) => acc && value.validation, true)
+			.reduce((acc, value) => acc && Boolean(value.validation), true)
 		setPasswordRequirements(newPasswordRequirements)
 		setPasswordValidated(newPasswordValidated)
 	}
 
-	const showPassword = (event: MouseEvent) => {
+	const showPassword = () => {
 		setPasswordVisible(prev => !prev)
 	}
 
-	const onSubmit = async (event: MouseEvent) => {
+	const onSubmit = async () => {
 		if (!emailValidated || !passwordValidated) {
 			if (!email) {
 				setEmailRequirements(prev => {

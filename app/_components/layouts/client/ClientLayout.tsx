@@ -1,7 +1,6 @@
 'use client'
 
 import {FC, ReactNode} from 'react'
-import {signOutHome} from '../../server/sign'
 import Link from 'next/link'
 
 interface ClientHomePropsType {

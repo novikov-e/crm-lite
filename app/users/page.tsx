@@ -1,5 +1,3 @@
-import {NextPage} from 'next'
-
-export default function LoginPage(): NextPage {
+export default function UsersPage() {
 	return <div>Users</div>
 }
