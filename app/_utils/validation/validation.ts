@@ -1,5 +1,6 @@
 import {Requirement} from './Requirement.interface'
 import {RequirementType} from './RequirementType.enum'
+import {z} from 'zod'
 
 export const validate = (requirement: Requirement, value: string) => {
 	switch (requirement.type) {
@@ -26,3 +27,5 @@ export const validate = (requirement: Requirement, value: string) => {
 	}
 	return requirement
 }
+
+export const cuidValidationSchema = z.string().cuid()

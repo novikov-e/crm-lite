@@ -1,9 +1,32 @@
 import {UserRole} from './app/_model/user/UserRole.enum'
 import {auth} from './auth'
 
-const adminPaths: string[] = ['/', '/home', '/api/auth/session', '/api/hello', '/services', '/users']
-const employeePaths: string[] = ['/', '/home', '/api/auth/session']
-const clientPaths: string[] = ['/', '/home', '/api/auth/session']
+const adminPaths: string[] = [
+	'/',
+	'/api/auth/session',
+	'/api/confirm_email/',
+	'/api/profile',
+	'/api/user',
+	'/api/user/by_id',
+	'/api/users',
+	'/profile',
+	'/services',
+	'/users',
+	'/user',
+	'/user/by_id'
+]
+const employeePaths: string[] = [
+	'/',
+	'/api/auth/session',
+	'/api/profile',
+	'/profile'
+]
+const clientPaths: string[] = [
+	'/',
+	'/api/auth/session',
+	'/api/profile',
+	'/profile'
+]
 
 export default auth(req => {
 	// console.log('middleware')
@@ -36,7 +59,18 @@ export default auth(req => {
 	}
 })
 
-// '/api/:path*'
 export const config = {
-	matcher: ['/home']
+	matcher: [
+		'/api/auth:path*',
+		'/api/confirm_email',
+		'/api/profile',
+		'/api/user:path*',
+		'/api/users',
+		'/users:path*',
+		'/confirm_email',
+		'/profile',
+		'/services',
+		'/socket',
+		'/users:path*'
+	]
 }

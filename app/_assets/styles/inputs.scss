@@ -1,0 +1,107 @@
+.cl-label {
+  @apply
+  text-black
+  dark:text-gray-300
+  text-sm;
+}
+
+.cl-input {
+  @apply
+  py-0
+  h-9
+  border-2
+  border-gray-900
+  dark:border-gray-400
+  text-black
+  dark:text-gray-300
+  rounded-md
+  ring-0
+  bg-transparent;
+}
+
+.cl-input:focus {
+  @apply
+  ring-0
+  border-gray-900
+  dark:border-gray-400
+  bg-gray-200
+  dark:bg-gray-500;
+}
+
+.cl-input:disabled {
+  opacity: 0.7;
+}
+
+.cl-input-large {
+  @apply h-11;
+}
+
+.cl-password-input-wrapper {
+  @apply
+  flex
+  items-center
+  pr-2
+  gap-2
+  border-2
+  border-gray-900
+  dark:border-gray-400
+  text-black
+  dark:text-gray-300
+  rounded-md
+  ;
+}
+
+.cl-password-input-wrapper-focus {
+  @apply
+  bg-gray-200
+  dark:bg-gray-500;
+}
+
+.cl-password-input-wrapper-focus-error {
+  @apply
+  ring-1
+  ring-red
+  dark:ring-red;
+}
+
+.cl-password-input-wrapper-focus-success {
+  @apply
+  ring-1
+  ring-green
+  dark:ring-green;
+}
+
+.cl-password-input {
+  @apply
+  bg-transparent
+  w-full
+  outline-none
+  border-none
+  border-transparent
+  rounded
+  focus:ring-0;
+}
+
+.cl-input-success {
+  @apply
+  border-green
+  dark:border-green;
+}
+
+.cl-input-success:focus {
+  @apply
+  border-green
+  dark:border-green;
+}
+
+.cl-input-error {
+  @apply
+  border-red
+  dark:border-red;
+}
+
+.cl-input-error:focus {
+  @apply
+  border-red
+  dark:border-red;
+}

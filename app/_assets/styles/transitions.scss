@@ -1,0 +1,27 @@
+.cl-requirement-item-animation-enter {
+  opacity: 0;
+  scale: 0;
+  height: 0;
+}
+
+.cl-requirement-item-animation-enter-active {
+  opacity: 1;
+  scale: 1;
+  height: 26px;
+  transition: height .5s linear, opacity .5s linear, scale .5s linear;
+  transition-behavior: allow-discrete;
+}
+
+.cl-requirement-item-animation-exit {
+  opacity: 1;
+  scale: 1;
+  height: 26px;
+}
+
+.cl-requirement-item-animation-exit-active {
+  opacity: 0;
+  scale: 0;
+  height: 0;
+  transition: height .5s linear, opacity .5s linear, scale .5s linear;
+  transition-behavior: allow-discrete;
+}

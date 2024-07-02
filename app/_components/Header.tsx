@@ -1,7 +1,7 @@
-import {DarkModeButton} from '_components/ui/buttons/DarkModeButton'
+import {DarkModeIconButton} from './ui/buttons/DarkModeIconButton'
 import Link from 'next/link'
 import {FC} from 'react'
-import { LogOutButton } from './ui/buttons/LogOutButton'
+import { LogOutIconButton } from './ui/buttons/LogOutIconButton'
 
 export interface LinkData {
 	title: string
@@ -15,7 +15,7 @@ interface HeaderPropsType {
 export const Header: FC<HeaderPropsType> = ({links}) => {
 	return (
 		<header className='cl-header-wrapper'>
-			<div className='flex items-center justify-between' style={{maxWidth: '1186px', width: '1186px'}}>
+			<div className='flex items-center justify-between bg-gray-950 rounded-2xl' style={{maxWidth: '1186px', width: '1186px'}}>
 				<div className='cl-left'>
 					<Link className='cl-link' href='/'>
 						Logo
@@ -35,8 +35,8 @@ export const Header: FC<HeaderPropsType> = ({links}) => {
 					)}
 				</div>
 				<div className='cl-right'>
-					<DarkModeButton />
-					<LogOutButton/>
+					<DarkModeIconButton />
+					<LogOutIconButton/>
 				</div>
 			</div>
 		</header>

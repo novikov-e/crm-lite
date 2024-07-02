@@ -1,51 +1,21 @@
 'use server'
 
-import { UserRole } from '../_model/user/UserRole.enum'
+import {UserRole} from '../_model/user/UserRole.enum'
 import prisma from '_utils/db'
-import { sendEmail } from '_utils/email'
-import { hash, genSalt } from 'bcryptjs'
-import { randomUUID } from 'crypto'
+import {hash, genSalt} from 'bcryptjs'
+import {emailConfirmation} from './email.actions'
+import {LoginValidationSchema} from '../_model/user/User.entity'
+import {signIn} from '../../auth'
 
-
-export const userRegistrationFromAdmin = async (email: string, password: string, role: string) => {
-	console.log(`newUser(${email}, ${password}, ${role})`)
-	await sendEmail(
-		'noved256@yandex.ru',
-		'Test subject',
-		'Test text',
-		`<a href="${process.env.APP_URL}/confirm_email/${randomUUID()}">Подтвердить адрес электронной почты</a>`
-	)
-	const salt = await genSalt(10)
-	await prisma.user.create({
-		data: {
-			email,
-			password: await hash(password, salt),
-			role
-		}
-	})
-}
-
-export const sendMail = async () => {
-	console.log('sendEmail');
-	
-  
-}
-
-
-export async function userRegistration(data: {email:string, password: string}) {
-	
-	//Валидация
-	
-	// console.log(`newUser(${data.email}, ${data.password})`)
-	//Проверка есть ли пользователь с таким почтовым ящиком
-	
-	const user = await prisma.user.findUnique({
-		where: {
-			email: data.email
-		}
-	})
-	console.log(user);
-	if (!user) {
+export async function userRegistration(data: {email: string, password: string}) {
+	const validation = await LoginValidationSchema.safeParseAsync(data)
+	if (validation.success) {
+		const user = await prisma.user.findUnique({
+			where: {
+				email: data.email
+			}
+		})
+		if (user) throw new Error('Пользователь с таким адресом электронной почты уже зарегистрирован')
 		const salt = await genSalt(10)
 		await prisma.user.create({
 			data: {
@@ -54,16 +24,7 @@ export async function userRegistration(data: {email:string, password: string}) {
 				role: UserRole.CLIENT
 			}
 		})
-		// await sendEmail(
-		// 	'noved256@yandex.ru',
-		// 	'Test subject',
-		// 	'Test text',
-		// 	`<a href="${process.env.APP_URL}/confirm_email/${randomUUID()}">Подтвердить адрес электронной почты</a>`
-		// )
-		return true
-	} else {
-		return false
+		await signIn('credentials', {email: data.email, password: data.password, redirectTo: '/'})
+		// await emailConfirmation()
 	}
 }
-
-export const emailIsAvailable = async (email: string) => {}

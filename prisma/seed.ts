@@ -5,7 +5,7 @@ const prisma = new PrismaClient()
 
 async function main() {
 	const salt = await genSalt(10)
-	const password = await hash('password', salt)
+	const password = await hash('1!Qwerty', salt)
 
 	const admin = await prisma.user.upsert({
 		where: { email: 'admin@test.ru' },

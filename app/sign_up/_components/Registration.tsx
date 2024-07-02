@@ -6,7 +6,7 @@ import {userRegistration} from '../../_actions/user.actions'
 import {useRouter} from 'next/navigation'
 import {toastr} from 'react-redux-toastr'
 import {MaterialIcon} from '../../_components/ui/icons/MaterialIcon'
-import {emailRegex, oneCapitalLetter, oneDigit, oneSymbol} from '../../_utils/string/regexes'
+import {emailRegex, oneCapitalLetter, oneDigit, oneSymbol, onlyLatinCharacters} from '../../_utils/string/regexes'
 import {RequirementType} from '../../_utils/validation/RequirementType.enum'
 import {Requirement} from '../../_utils/validation/Requirement.interface'
 import {validate} from '../../_utils/validation/validation'
@@ -69,6 +69,13 @@ export const Registration: FC = props => {
 			type: RequirementType.MIN_LENGTH,
 			value: 8,
 			message: 'Длина не менее восьми символов',
+			validation: null
+		},
+		{
+			name: 'latin',
+			type: RequirementType.REGEX,
+			value: onlyLatinCharacters,
+			message: 'Только латинские буквы',
 			validation: null
 		},
 		{
@@ -165,14 +172,16 @@ export const Registration: FC = props => {
 			}
 			return
 		}
-		const registration: boolean = await userRegistration({email, password})
-		if (registration) {
+		try {
+			await userRegistration({email, password})
 			toastr.success(
 				'Регистрация прошла успешно',
-				'На вашу электронную почту отправлена ссылка для подтверждения регистрации'
+				''
+				// 'На вашу электронную почту отправлена ссылка для подтверждения регистрации'
 			)
 			router.push('/')
-		} else {
+		} catch (e) {
+			console.error(e)
 			toastr.error('Ошибка', 'Аккаунт с таким адресом электронной почты уже есть')
 		}
 	}
@@ -181,13 +190,14 @@ export const Registration: FC = props => {
 		<Body>
 			<section className="flex h-full items-center">
 				<form className="cl-login-registration">
-					<h1 className="cl-form-title">Регистрация</h1>
+					<h1 className="cl-title">Регистрация</h1>
 					<label className="cl-label mb-2" htmlFor="email">Электронная почта</label>
 					<input
 						id="email"
 						name="email"
 						className={classNames(
 							'cl-input',
+							'cl-input-large',
 							'mb-2',
 							{'cl-input-success': emailValidated},
 							{'cl-input-error': !emailValidated && emailValidated !== undefined})}
@@ -203,6 +213,7 @@ export const Registration: FC = props => {
 					<label className="cl-label my-2" htmlFor="email">Пароль</label>
 					<div className={classNames(
 						'cl-password-input-wrapper',
+						'cl-input-large',
 						'mb-2',
 						{'cl-password-input-wrapper-focus': passwordFocused},
 						{'cl-password-input-wrapper-focus-success': passwordFocused && passwordValidated},
@@ -220,7 +231,7 @@ export const Registration: FC = props => {
 							onBlur={() => setPasswordFocused(false)}
 							autoComplete="new-password"
 						/>
-						<button onClick={showPassword} type="button" className="cl-visibility-button">
+						<button onClick={showPassword} type="button" className="cl-icon-button cl-icon-22">
 							<MaterialIcon iconName={
 								!passwordVisible ?
 									'MdOutlineVisibility' :
@@ -232,7 +243,7 @@ export const Registration: FC = props => {
 							<RequirementItem key={requirement.name} requirement={requirement} />)}
 					</div>
 					<button
-						className="cl-button z-10 mt-2"
+						className="cl-button cl-button-large z-10 mt-2"
 						type="button"
 						onClick={onSubmit}>Зарегистрироваться
 					</button>

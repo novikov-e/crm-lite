@@ -4,8 +4,8 @@ type Props = {};
 
 export const ClientIndex: FC<Props> = () => {
 	return (
-		<div>
-			Client index
+		<div className='flex justify-center items-center h-12 text-2xl'>
+			Client page
 		</div>
 	)
 }

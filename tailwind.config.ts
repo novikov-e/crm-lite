@@ -3,7 +3,7 @@ import type {Config} from 'tailwindcss'
 import colors from 'tailwindcss/colors'
 import plugin from 'tailwindcss/plugin'
 
-const primary = '#E30B13'
+const primary = '#0b87e4'
 
 const config: Config = {
 	content: [
@@ -14,46 +14,58 @@ const config: Config = {
 	darkMode: 'class',
 	// darkMode: 'selector',
 	theme: {
-		// 	colors: {
-		// 		primary,
-		// 		black: colors.black,
-		// 		white: colors.white,
-		// 		transparent: colors.transparent,
-		// 		yellow: {
-		// 			500: '#F5C521'
-		// 		},
-		// 		gray: {
-		// 			300: '#D9DAE8',
-		// 			500: '#999AA5',
-		// 			600: '#66676E',
-		// 			700: '#39393F',
-		// 			800: '#242529',
-		// 			900: '#191B1F',
-		// 			950: '#101215'
-		// 		}
-		// 	},
+		colors: {
+			primary,
+			transparent: colors.transparent,
+			gray: {
+				100: '#f6f5f6',
+				200: '#dcdcdc',
+				300: '#D9DAE8',
+				400: '#999AA5',
+				500: '#66676E',
+				600: '#5e5e5e',
+				700: '#4a4b4e',
+				800: '#393a3e',
+				900: '#242529'
+			},
+			white: '#fafafa',
+			black: '#171616',
+			red: '#db4c4c',
+			pink: '#eb3472',
+			yellow: '#fbc017',
+			aqua: '#2a9095',
+			green: '#4b8333',
+			orange: '#fd7336',
+			blue: '#0b87e4',
+			purple: '#a969a0'
+		},
 		extend: {
 			keyframes: {
 				hide: {
 					from: {
 						height: 'auto'
-					},
+					}
+					,
 					to: {
 						height: '0'
 					}
-				},
+				}
+				,
 				visible: {
 					from: {
 						height: '0'
-					},
+					}
+					,
 					to: {
 						height: 'auto'
 					}
 				}
-			},
+			}
+			,
 			animation: {
 				animation_hide: 'hide 1s linear',
-				animation_visible: 'visible 1s linear'
+				animation_visible:
+					'visible 1s linear'
 			}
 			// 		backgroundImage: {
 			// 			'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -108,7 +120,8 @@ const config: Config = {
 	},
 	corePlugins: {
 		aspectRatio: false
-	},
+	}
+	,
 	plugins: [
 		require('@tailwindcss/forms'),
 		require('@tailwindcss/aspect-ratio'),

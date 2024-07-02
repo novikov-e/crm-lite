@@ -1,0 +1,14 @@
+.cl-login-registration {
+  @apply
+  p-6
+  flex
+  flex-col
+  bg-gray-100
+  dark:bg-gray-700
+  shadow-md
+  shadow-gray-500
+  dark:shadow-black
+  rounded;
+  width: 360px;
+  min-width: 320px;
+}

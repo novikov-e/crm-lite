@@ -1,4 +1,6 @@
-import {DarkModeButton} from '_components/ui/buttons/DarkModeButton'
+'use client'
+
+import {DarkModeIconButton} from './ui/buttons/DarkModeIconButton'
 import Link from 'next/link'
 import {FC} from 'react'
 
@@ -17,8 +19,8 @@ export const LoginHeader: FC<HeaderPropsType> = ({leftLinks, rightLinks}) => {
 		<header className='cl-header-wrapper'>
 			<div className='flex items-center justify-between' style={{maxWidth: '1186px', width: '1186px'}}>
 				<div className='cl-left'>
-					<Link className='cl-link' href='/'>
-						Logo
+					<Link className='cl-link text-2xl' href='/'>
+						Lite CRM
 					</Link>
 					{leftLinks && (
 						<nav>
@@ -48,7 +50,7 @@ export const LoginHeader: FC<HeaderPropsType> = ({leftLinks, rightLinks}) => {
 							</ul>
 						</nav>
 					)}
-					<DarkModeButton />
+					<DarkModeIconButton />
 				</div>
 			</div>
 		</header>

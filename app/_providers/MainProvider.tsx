@@ -8,6 +8,7 @@ import {store} from '_redux/store'
 import {HeadProvider} from './HeadProvider/HeadProvider'
 import {SessionProvider} from 'next-auth/react'
 import {ThemeProvider} from 'next-themes'
+import {ReactQueryDevtools} from '@tanstack/react-query-devtools'
 const queryClient = new QueryClient({
 	defaultOptions: {
 		queries: {
@@ -25,6 +26,7 @@ export const MainProvider: FC<{children?: ReactNode}> = ({children}) => {
 					<SessionProvider>
 						<ThemeProvider attribute='class'>{children}</ThemeProvider>
 					</SessionProvider>
+					{/*<ReactQueryDevtools initialIsOpen={false} />*/}
 				</QueryClientProvider>
 			</Provider>
 		</HeadProvider>

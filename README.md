@@ -5,5 +5,6 @@
 2. Run a migration to create database tables with Prisma Migrate
 ```bash
 npx prisma migrate dev --name init
+npx prisma db seed
 ```
 
