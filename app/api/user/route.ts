@@ -29,7 +29,8 @@ export async function POST(request: Request) {
 				}
 			})
 			await emailConfirmation()
-			return Response.json({}, {status: 201})
+			// return Response.json({}, {status: 201})
+			return Response
 		}
 	}
 	return Response.json({error: 'Error'}, {status: 400})
