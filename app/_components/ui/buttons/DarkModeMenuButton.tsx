@@ -7,7 +7,7 @@ import {useTheme} from 'next-themes'
 
 export const DarkModeMenuButton: FC = props => {
 
-	const [button, setButton] = useState<ReactNode>()
+	// const [button, setButton] = useState<ReactNode>()
 	const {theme, setTheme} = useTheme()
 
 	const changeTheme = () => {
@@ -16,26 +16,43 @@ export const DarkModeMenuButton: FC = props => {
 			: setTheme('light')
 	}
 
-	useEffect(() => {
-		switch (theme) {
-			case 'light':
-				setButton(
-					<button onClick={changeTheme} className="menu-item w-full">
-						<MaterialIcon iconName="MdNightlight" />
-						Тёмная тема
-					</button>
-				)
-				break;
-			case 'dark':
-				setButton(
-					<button onClick={changeTheme} className="menu-item w-full">
-						<MaterialIcon iconName="MdOutlineWbSunny" />
-						Светлая тема
-					</button>
-				)
-				break;
-		}
-	}, [theme])
+	// useEffect(() => {
+	// 	switch (theme) {
+	// 		case 'light':
+	// 			setButton(
+	// 				<button onClick={changeTheme} className="menu-item w-full">
+	// 					<MaterialIcon iconName="MdNightlight" />
+	// 					Тёмная тема
+	// 				</button>
+	// 			)
+	// 			break;
+	// 		case 'dark':
+	// 			setButton(
+	// 				<button onClick={changeTheme} className="menu-item w-full">
+	// 					<MaterialIcon iconName="MdOutlineWbSunny" />
+	// 					Светлая тема
+	// 				</button>
+	// 			)
+	// 			break;
+	// 	}
+	// }, [theme])
+	//
+	// return <>{button}</>
 
-	return <>{button}</>
+	switch (theme) {
+		case 'light':
+			return (
+				<button onClick={changeTheme} className="menu-item w-full">
+					<MaterialIcon iconName="MdNightlight" />
+					Тёмная тема
+				</button>
+			)
+		case 'dark':
+			return (
+				<button onClick={changeTheme} className="menu-item w-full">
+					<MaterialIcon iconName="MdOutlineWbSunny" />
+					Светлая тема
+				</button>
+			)
+	}
 }
