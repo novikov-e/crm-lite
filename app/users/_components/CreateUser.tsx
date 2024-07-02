@@ -11,6 +11,7 @@ import Link from 'next/link'
 import {CreateUserInterface, IUser, UserCreatedByAdminValidationSchema} from '../../_model/user/User.entity'
 import {useRouter} from 'next/navigation'
 import classNames from 'classnames'
+import {revalidatePath} from 'next/cache'
 
 type CreateUserProps = {};
 
@@ -22,6 +23,7 @@ export const CreateUser: FC<CreateUserProps> = () => {
 		mutationFn: async (data: CreateUserInterface) => postRequest('/api/user', data),
 		onSuccess: () => {
 			queryClient.invalidateQueries({queryKey: ['users']})
+			revalidatePath('/users')
 			router.push('/users')
 		}
 	})

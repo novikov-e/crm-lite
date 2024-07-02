@@ -12,6 +12,7 @@ import {IUser, UserUpdateByAdminValidationSchema} from '../../_model/user/User.e
 import {useRouter} from 'next/navigation'
 import Link from 'next/link'
 import classNames from 'classnames'
+import {revalidatePath} from 'next/cache'
 
 type EditUserProps = {
 	id: string
@@ -30,6 +31,8 @@ export const EditUser: FC<EditUserProps> = ({id}) => {
 		onSuccess: () => {
 			queryClient.invalidateQueries({queryKey: ['users']})
 			queryClient.invalidateQueries({queryKey: ['edit_user']})
+			revalidatePath('/users')
+			revalidatePath('/edit_user')
 			router.push('/users')
 		}
 	})

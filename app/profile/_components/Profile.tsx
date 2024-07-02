@@ -10,6 +10,7 @@ import {MaterialIcon} from '../../_components/ui/icons/MaterialIcon'
 import {EditProfileValidationSchema, IUser} from '../../_model/user/User.entity'
 import Link from 'next/link'
 import classNames from 'classnames'
+import {revalidatePath} from 'next/cache'
 
 type ProfileProps = {};
 
@@ -25,6 +26,8 @@ export const Profile: FC<ProfileProps> = (props) => {
 		onSuccess: () => {
 			queryClient.invalidateQueries({queryKey: ['users']})
 			queryClient.invalidateQueries({queryKey: ['profile']})
+			revalidatePath('/users')
+			revalidatePath('/profile')
 		}
 	})
 
