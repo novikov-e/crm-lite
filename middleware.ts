@@ -61,7 +61,6 @@ export default auth(req => {
 
 export const config = {
 	matcher: [
-		'/api/auth:path*',
 		'/api/confirm_email',
 		'/api/profile',
 		'/api/user:path*',
