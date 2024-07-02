@@ -21,8 +21,8 @@ export const Users: FC<UsersProps> = (props) => {
 	})
 	const {mutate} = useMutation({
 		mutationFn: (id: string) => deleteRequest('/api/user', {id}),
-		onSuccess: () => {
-			queryClient.invalidateQueries({queryKey: ['users']})
+		onSuccess: async () => {
+			await queryClient.invalidateQueries({queryKey: ['users']})
 			revalidatePath('/users')
 		}
 	})
