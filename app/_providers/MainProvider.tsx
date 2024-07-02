@@ -26,7 +26,7 @@ export const MainProvider: FC<{children?: ReactNode}> = ({children}) => {
 					<SessionProvider>
 						<ThemeProvider attribute='class'>{children}</ThemeProvider>
 					</SessionProvider>
-					{/*<ReactQueryDevtools initialIsOpen={false} />*/}
+					<ReactQueryDevtools initialIsOpen={false} />
 				</QueryClientProvider>
 			</Provider>
 		</HeadProvider>
