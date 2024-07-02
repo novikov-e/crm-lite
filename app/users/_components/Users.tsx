@@ -8,6 +8,7 @@ import {useMutation, useQuery, useQueryClient} from '@tanstack/react-query'
 import {deleteRequest, getRequest, postRequest} from '../../_utils/fetch'
 import {userRoleFormatter} from '../../_utils/string/formatters'
 import {IUser} from '../../_model/user/User.entity'
+import {revalidatePath} from 'next/cache'
 
 type UsersProps = {};
 
@@ -22,6 +23,7 @@ export const Users: FC<UsersProps> = (props) => {
 		mutationFn: (id: string) => deleteRequest('/api/user', {id}),
 		onSuccess: () => {
 			queryClient.invalidateQueries({queryKey: ['users']})
+			revalidatePath('/users')
 		}
 	})
 
