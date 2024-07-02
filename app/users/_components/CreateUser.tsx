@@ -22,6 +22,7 @@ export const CreateUser: FC<CreateUserProps> = () => {
 	const {mutate} = useMutation({
 		mutationFn: async (data: CreateUserInterface) => postRequest('/api/user', data),
 		onSuccess: async() => {
+			console.log('CreateUser - onSuccess()')
 			await queryClient.invalidateQueries({queryKey: ['users']})
 			revalidatePath('/users')
 			router.push('/users')
