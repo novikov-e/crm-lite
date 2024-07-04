@@ -33,6 +33,7 @@ export const EditUser: FC<EditUserProps> = ({id}) => {
 			queryClient.invalidateQueries({queryKey: ['users']})
 			queryClient.invalidateQueries({queryKey: ['edit_user']})
 			router.push('/users')
+			router.refresh()
 			revalidatePath('/users')
 			revalidatePath('/edit_user')
 		}

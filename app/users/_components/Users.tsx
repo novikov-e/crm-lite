@@ -9,11 +9,13 @@ import {deleteRequest, getRequest, postRequest} from '../../_utils/fetch'
 import {userRoleFormatter} from '../../_utils/string/formatters'
 import {IUser} from '../../_model/user/User.entity'
 import {revalidatePath} from 'next/cache'
+import {useRouter} from 'next/navigation'
 
 type UsersProps = {};
 
 export const Users: FC<UsersProps> = (props) => {
 
+	const router = useRouter()
 	const queryClient = useQueryClient()
 	const {data, isPending} = useQuery({
 		queryKey: ['users'],
@@ -24,6 +26,7 @@ export const Users: FC<UsersProps> = (props) => {
 		mutationFn: (id: string) => deleteRequest('/api/user', {id}),
 		onSuccess: () => {
 			queryClient.invalidateQueries({queryKey: ['users']})
+			router.refresh()
 			revalidatePath('/users')
 		}
 	})

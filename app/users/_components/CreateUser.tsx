@@ -25,6 +25,7 @@ export const CreateUser: FC<CreateUserProps> = () => {
 		onSuccess: () => {
 			queryClient.invalidateQueries({queryKey: ['users']})
 			router.push('/users')
+			router.refresh()
 			revalidatePath('/users')
 		}
 	})
