@@ -22,10 +22,11 @@ export const Profile: FC<ProfileProps> = (props) => {
 		queryFn: () => getRequest<IUser>('/api/profile')
 	})
 	const {mutate} = useMutation({
+		mutationKey: ['update_profile'],
 		mutationFn: async (data: IUser) => putRequest('/api/profile', data),
-		onSuccess: async () => {
-			await queryClient.invalidateQueries({queryKey: ['users']})
-			await queryClient.invalidateQueries({queryKey: ['profile']})
+		onSuccess: () => {
+			queryClient.invalidateQueries({queryKey: ['users']})
+			queryClient.invalidateQueries({queryKey: ['profile']})
 			revalidatePath('/users')
 			revalidatePath('/profile')
 		}

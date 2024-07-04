@@ -32,7 +32,7 @@ export async function POST(request: Request) {
 			return Response.json({}, {status: 200})
 		}
 	}
-	return Response.json({error: 'Error'}, {status: 400})
+	return Response.error()
 }
 
 export async function PUT(request: Request) {

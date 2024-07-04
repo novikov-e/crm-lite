@@ -27,13 +27,14 @@ export const EditUser: FC<EditUserProps> = ({id}) => {
 		queryFn: () => postRequest<IUser>('/api/user/by_id', {id})
 	})
 	const {mutate} = useMutation({
+		mutationKey: ['update_user'],
 		mutationFn: async (data: IUser) => putRequest('/api/user', data),
-		onSuccess: async() => {
-			await queryClient.invalidateQueries({queryKey: ['users']})
-			await queryClient.invalidateQueries({queryKey: ['edit_user']})
+		onSuccess: () => {
+			queryClient.invalidateQueries({queryKey: ['users']})
+			queryClient.invalidateQueries({queryKey: ['edit_user']})
+			router.push('/users')
 			revalidatePath('/users')
 			revalidatePath('/edit_user')
-			router.push('/users')
 		}
 	})
 

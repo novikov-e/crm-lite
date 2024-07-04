@@ -77,10 +77,9 @@ export default async function RootLayout({children}: Readonly<{children: React.R
 				<html suppressHydrationWarning={true} lang="en">
 				<body className={inter.className}>
 				<MainProvider>
-					{/*<Header />*/}
-					{/*<Body>*/}
-						<ClientLayout>{children}</ClientLayout>
-					{/*</Body>*/}
+					<ClientLayout>
+						{children}
+					</ClientLayout>
 				</MainProvider>
 				</body>
 				</html>
